@@ -91,7 +91,7 @@ Loading a data file is as easy as calling `read`:
 
 >>> import axographio
 >>>
->>> f = axographio.read("AxoGraph X File.axgx") }}}
+>>> f = axographio.read("AxoGraph X File.axgx") 
 
 At this point the variable f will contain a file_contents object with the
 column names and data from the file.  For example, you could now plot the first
@@ -99,7 +99,9 @@ two columns using matplotlib:
 
 >>> import matplotlib.pyplot as plt
 >>> 
->>> plt.plot(f.data[0], f.data[1]) plt.xlabel(f.names[0]) plt.ylabel(f.names[1])
+>>> plt.plot(f.data[0], f.data[1]) 
+>>> plt.xlabel(f.names[0]) 
+>>> plt.ylabel(f.names[1])
 >>> plt.show() 
 
 Of course, you probably have grander plans than just plotting the data.  The
@@ -116,13 +118,15 @@ object (or use one you loaded earlier), and then call write.  For example, the
 following code creates a file called "my60Hz.axgd" with two channels with 60 Hz
 sine waves
 
->>>  import axographio import numpy as np
+>>> import axographio import numpy as np
 >>>
->>> times = np.arange(0,10,0.0001) column1 = np.sin(2*np.pi * 60 * times) column2 =
->>> np.cos(2*np.pi * 60 * times) f = axographio.file_contents(
+>>> times = np.arange(0,10,0.0001) 
+>>> column1 = np.sin(2*np.pi * 60 * times) 
+>>> column2 = np.cos(2*np.pi * 60 * times) 
+>>> f = axographio.file_contents(
 ...    ['time (s)', 'my recording (V)', 'your recording (V)'], 
 ...    [times, column1, column2])
->>> f.write("my60Hz.axgd") }}}
+>>> f.write("my60Hz.axgd")
 
 Acknowledgments
 ===============
@@ -131,9 +135,10 @@ This initial version of this project was written in the
 Chiel Laboratory at Case Western Reserve University, with support from NIH
 grant NS047073, an Ohio Innovation Incentive Award Fellowship, and the
 Case Western Reserve MSTP (NIH T32 GM007250).  This project builds on a 
-number of other open source projects, including Python, C++ example code from 
-AxoGraph Scientific (placed in the public domain; a modified version is
-included with the project source code), Cython], and many others.
+number of other open source projects, including Python, C++ AxoGraph file
+input/output code from AxoGraph Scientific (placed in the public domain; a
+modified version is included with the project source code), Cython, and many
+others.
 """
 )
 
