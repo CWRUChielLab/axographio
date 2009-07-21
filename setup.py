@@ -1,44 +1,5 @@
 #!/usr/bin/env python
-
-from setuptools import setup
-from distutils.extension import Extension
-
-# setuptools DWIM monkey-patch madness
-# http://mail.python.org/pipermail/distutils-sig/2007-September/thread.html#8204
-import sys
-import numpy
-
-if 'setuptools.extension' in sys.modules:
-    m = sys.modules['setuptools.extension']
-    m.Extension.__dict__ = m._Extension.__dict__
-
-setup(
-    name = "axographio",
-    version = "0.1.1b1",
-    setup_requires = ['setuptools_cython', 'numpy'],
-    ext_modules = [
-        Extension('axographio', [
-            'axographio.pyx', 
-            'axograph_readwrite/fileUtils.cpp', 
-            'axograph_readwrite/byteswap.cpp', 
-            'axograph_readwrite/stringUtils.cpp', 
-            'axograph_readwrite/AxoGraph_ReadWrite.cpp'], 
-            language='c++', include_dirs=[numpy.get_include()],
-            define_macros=[('NO_CARBON',1)]
-            )
-        ],
-    test_suite = 'test_axographio.test_all',
-    # metatdata
-    author = "Kendrick Shaw",
-    author_email = "kms15@case.edu",
-    license = "BSD License",
-    keywords = ["physiology","electrophysiology","axograph"],
-    url = "http://code.google.com/p/axographio/",
-    description = "A python library for reading and writing AxoGraph data files",
-    classifiers = ["Development Status :: 4 - Beta", "Intended Audience :: Developers", 
-        "Intended Audience :: Science/Research", "License :: OSI Approved :: BSD License",
-        "Topic :: Scientific/Engineering :: Bio-Informatics"],
-    long_description = """
+"""
 axographio is a library that makes it easy to read and write binary data files
 in the AxoGraph file format.  
 
@@ -174,5 +135,45 @@ input/output code from AxoGraph Scientific (placed in the public domain; a
 modified version is included with the project source code), Cython, and many
 others.  Thanks to Dr. Hillel Chiel for testing and helpful feedback.  
 """
-)
+
+from setuptools import setup
+from distutils.extension import Extension
+
+# setuptools DWIM monkey-patch madness
+# http://mail.python.org/pipermail/distutils-sig/2007-September/thread.html#8204
+import sys
+import numpy
+
+if 'setuptools.extension' in sys.modules:
+    m = sys.modules['setuptools.extension']
+    m.Extension.__dict__ = m._Extension.__dict__
+
+setup(
+    name = "axographio",
+    version = "0.1.1b1",
+    setup_requires = ['setuptools_cython', 'numpy'],
+    ext_modules = [
+        Extension('axographio', [
+            'axographio.pyx', 
+            'axograph_readwrite/fileUtils.cpp', 
+            'axograph_readwrite/byteswap.cpp', 
+            'axograph_readwrite/stringUtils.cpp', 
+            'axograph_readwrite/AxoGraph_ReadWrite.cpp'], 
+            language='c++', include_dirs=[numpy.get_include()],
+            define_macros=[('NO_CARBON',1)]
+            )
+        ],
+    test_suite = 'test_axographio.test_all',
+    # metatdata
+    author = "Kendrick Shaw",
+    author_email = "kms15@case.edu",
+    license = "BSD License",
+    keywords = ["physiology","electrophysiology","axograph"],
+    url = "http://code.google.com/p/axographio/",
+    description = "A python library for reading and writing AxoGraph data files",
+    classifiers = ["Development Status :: 4 - Beta", "Intended Audience :: Developers", 
+        "Intended Audience :: Science/Research", "License :: OSI Approved :: BSD License",
+        "Topic :: Scientific/Engineering :: Bio-Informatics"],
+    long_description = __doc__
+    )
 
