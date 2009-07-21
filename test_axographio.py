@@ -147,6 +147,21 @@ class TestReadWrite(unittest.TestCase):
 
 
 
+class TestRegressions(unittest.TestCase):
+    """Tests for bugs that were found in previous releases"""
+
+    # bugs fixed in 0.1.1
+    def test_linearsequencelength(self):
+        """ Off-by-one error in len(np.asarray(a_linearsequence))
+        Found by: Dr. Hillel Chiel (hjc@case.edu)
+        """
+        seq = axographio.linearsequence(1000, 0., 0.036)
+        seqAsArray = np.asarray(seq)
+        self.assertEqual(len(seq), 1000)
+        self.assertEqual(len(seqAsArray), 1000)
+
+
+
 def test_all():
     """Returns a test suite with all of the tests for axographio"""
     suite = unittest.TestSuite()
@@ -154,6 +169,7 @@ def test_all():
     suite.addTest(doctest.DocTestSuite(axographio))
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestSampleFiles))
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestReadWrite))
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestRegressions))
     return suite
 
 #
@@ -192,5 +208,6 @@ def fix_module_doctest(module):
                and _from_module(module, value)):
            module.__test__[name] = value.__doc__
 
+
 if __name__ == '__main__':
-    unittest.main()
+    unittest.TextTestRunner(verbosity=2).run(test_all())

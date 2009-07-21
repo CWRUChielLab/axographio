@@ -279,8 +279,8 @@ class linearsequence:
 
     def __array__(self, dtype=np.float64):
         """Implements numpy.asarray(s)"""
-        return np.arange(self.start, self.start + self.step * self.numpoints,
-                self.step, dtype=dtype) 
+        return np.linspace(self.start, self.start + self.step * self.numpoints,
+                self.numpoints, endpoint=False) 
 
     def __iter__(self):
         """Implements iter(s)"""

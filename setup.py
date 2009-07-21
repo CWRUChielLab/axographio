@@ -14,7 +14,7 @@ if 'setuptools.extension' in sys.modules:
 
 setup(
     name = "axographio",
-    version = "0.1.0",
+    version = "0.1.1b1",
     setup_requires = ['setuptools_cython', 'numpy'],
     ext_modules = [
         Extension('axographio', [
@@ -67,12 +67,20 @@ Preinstallation Requirements
 ----------------------------
 
 * A working Python installation
-* The NumPy package
 * The setuptools package
+* The NumPy package
+* The Cython package
 
 Note that NumPy takes a bit of work to build, so it may be easiest to install
-it from a repository (if you're using Linux) or install a Python distribution
-containing it, such as the Enthought Python Distribution.  
+it from your linux distribution's repository, or use as pre-built package
+such as the Scipy Superpack (http://macinscience.org/?page_id=6) for the mac. 
+Depending on your OS, you may be able to get away with simply typing:
+
+::
+
+ sudo easy_install numpy
+ sudo easy_install Cython
+
 
 Installation
 ------------
@@ -81,7 +89,7 @@ Once all the preinstallation requirements have been met, you can download and
 install axographio using easy_install by typing the following command in a
 terminal window:
 
- easy_install axographio 
+ easy_install axographio
 
 
 Usage
@@ -104,6 +112,8 @@ two columns using matplotlib:
 >>> plt.ylabel(f.names[1])
 >>> plt.show() 
 
+(The plt.show() may not be optional depending on your OS.)
+
 Of course, you probably have grander plans than just plotting the data.  The
 column data supports the standard sequence interfaces (i.e. indexing,
 iteration, etc.) and can be converted to a scipy or numpy array using the
@@ -115,10 +125,11 @@ asarray functions in these packages, e.g.:
 
 Writing files is also relatively easy.  You simply create a new file_contents
 object (or use one you loaded earlier), and then call write.  For example, the
-following code creates a file called "my60Hz.axgd" with two channels with 60 Hz
-sine waves
+following code creates a file in the current directory called "my60Hz.axgx" 
+with two channels with 60 Hz sine waves
 
->>> import axographio import numpy as np
+>>> import axographio 
+>>> import numpy as np
 >>>
 >>> times = np.arange(0,10,0.0001) 
 >>> column1 = np.sin(2*np.pi * 60 * times) 
@@ -126,13 +137,28 @@ sine waves
 >>> f = axographio.file_contents(
 ...    ['time (s)', 'my recording (V)', 'your recording (V)'], 
 ...    [times, column1, column2])
->>> f.write("my60Hz.axgd")
+>>> f.write("my60Hz.axgx")
+
 
 Questions and Support
 =====================
 
 Please post any questions, problems, comments, or suggestions on the axographio
 group on google groups (http://groups.google.com/group/axographio)
+
+
+News
+====
+
+0.1.1
+-----
+    Fixed a rounding error that could create one extra data point in the times 
+    column.
+
+0.1.0
+-----
+    First release
+
 
 Acknowledgments
 ===============
