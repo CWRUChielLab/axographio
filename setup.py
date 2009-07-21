@@ -72,7 +72,7 @@ Preinstallation Requirements
 
 Note that NumPy takes a bit of work to build, so it may be easiest to install
 it from a repository (if you're using Linux) or install a Python distribution
-containing it, such as the Enthought Python Distribution.
+containing it, such as the Enthought Python Distribution.  
 
 Installation
 ------------
@@ -127,6 +127,12 @@ sine waves
 ...    ['time (s)', 'my recording (V)', 'your recording (V)'], 
 ...    [times, column1, column2])
 >>> f.write("my60Hz.axgd")
+
+Questions and Support
+=====================
+
+Please post any questions, problems, comments, or suggestions on the axographio
+group on google groups (http://groups.google.com/group/axographio)
 
 Acknowledgments
 ===============
