@@ -89,6 +89,8 @@ Once all the preinstallation requirements have been met, you can download and
 install axographio using easy_install by typing the following command in a
 terminal window:
 
+::
+
  easy_install axographio
 
 
@@ -112,7 +114,7 @@ two columns using matplotlib:
 >>> plt.ylabel(f.names[1])
 >>> plt.show() 
 
-(The plt.show() may not be optional depending on your OS.)
+(The plt.show() command may be optional depending on your OS.)
 
 Of course, you probably have grander plans than just plotting the data.  The
 column data supports the standard sequence interfaces (i.e. indexing,
@@ -152,8 +154,8 @@ News
 
 0.1.1
 -----
-    Fixed a rounding error that could create one extra data point in the times 
-    column.
+    Fixed a rounding error that could create one extra data point in the time 
+    column. 
 
 0.1.0
 -----
@@ -170,7 +172,7 @@ Case Western Reserve MSTP (NIH T32 GM007250).  This project builds on a
 number of other open source projects, including Python, C++ AxoGraph file
 input/output code from AxoGraph Scientific (placed in the public domain; a
 modified version is included with the project source code), Cython, and many
-others.
+others.  Thanks to Dr. Hillel Chiel for testing and helpful feedback.  
 """
 )
 
