@@ -55,6 +55,16 @@ terminal window:
  easy_install axographio
 
 
+Upgrading
+---------
+
+If you have an older version of the package installed, you can update it to 
+the newest version using easy_install with the "-U" flag:
+
+::
+ 
+ easy_install -U axographio
+
 Usage
 =====
 
@@ -133,7 +143,8 @@ Case Western Reserve MSTP (NIH T32 GM007250).  This project builds on a
 number of other open source projects, including Python, C++ AxoGraph file
 input/output code from AxoGraph Scientific (placed in the public domain; a
 modified version is included with the project source code), Cython, and many
-others.  Thanks to Dr. Hillel Chiel for testing and helpful feedback.  
+others.  Thanks also to Dr. Hillel Chiel for providing testing and helpful 
+suggestions.  
 """
 
 from setuptools import setup
