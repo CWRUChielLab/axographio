@@ -147,17 +147,8 @@ others.  Thanks also to Dr. Hillel Chiel for providing testing and helpful
 suggestions.  
 """
 
-from setuptools import setup
-from distutils.extension import Extension
-
-# setuptools DWIM monkey-patch madness
-# http://mail.python.org/pipermail/distutils-sig/2007-September/thread.html#8204
-import sys
+from setuptools import setup, Extension
 import numpy
-
-if 'setuptools.extension' in sys.modules:
-    m = sys.modules['setuptools.extension']
-    m.Extension.__dict__ = m._Extension.__dict__
 
 setup(
     name = "axographio",
