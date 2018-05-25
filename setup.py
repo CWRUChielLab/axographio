@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 axographio is a library that makes it easy to read and write binary data files
-in the AxoGraph file format.  
+in the AxoGraph file format.
 
 AxoGraph X is a commercial software package used for data acquisition and
 analysis that is widely used in electrophysiological research (see
@@ -14,12 +14,12 @@ to these files with AxoGraph X.
 Python is a powerful and easy to use general purpose programming language (see
 http://python.org for more details).  There are many useful python libraries
 available for scientific data analysis and data visualization such as scipy,
-matplotlib and MayaVI.  
+matplotlib and MayaVI.
 
 This library provides a simple interface for loading AxoGraph data files into
 a python program or interactive session.  If you want to analyze data you
 recorded in AxoGraph using python based tools, this library provides the glue
-code you'll need.  
+code you'll need.
 
 Installation
 ============
@@ -34,7 +34,7 @@ Preinstallation Requirements
 
 Note that NumPy takes a bit of work to build, so it may be easiest to install
 it from your linux distribution's repository, or use as pre-built package
-such as the Scipy Superpack (http://macinscience.org/?page_id=6) for the mac. 
+such as the Scipy Superpack (http://macinscience.org/?page_id=6) for the mac.
 Depending on your OS, you may be able to get away with simply typing:
 
 ::
@@ -58,11 +58,11 @@ terminal window:
 Upgrading
 ---------
 
-If you have an older version of the package installed, you can update it to 
+If you have an older version of the package installed, you can update it to
 the newest version using easy_install with the "-U" flag:
 
 ::
- 
+
  easy_install -U axographio
 
 Usage
@@ -72,18 +72,18 @@ Loading a data file is as easy as calling `read`:
 
 >>> import axographio
 >>>
->>> f = axographio.read("AxoGraph X File.axgx") 
+>>> f = axographio.read("AxoGraph X File.axgx")
 
 At this point the variable f will contain a file_contents object with the
 column names and data from the file.  For example, you could now plot the first
 two columns using matplotlib:
 
 >>> import matplotlib.pyplot as plt
->>> 
->>> plt.plot(f.data[0], f.data[1]) 
->>> plt.xlabel(f.names[0]) 
+>>>
+>>> plt.plot(f.data[0], f.data[1])
+>>> plt.xlabel(f.names[0])
 >>> plt.ylabel(f.names[1])
->>> plt.show() 
+>>> plt.show()
 
 (The plt.show() command may be optional depending on your OS.)
 
@@ -98,17 +98,17 @@ asarray functions in these packages, e.g.:
 
 Writing files is also relatively easy.  You simply create a new file_contents
 object (or use one you loaded earlier), and then call write.  For example, the
-following code creates a file in the current directory called "my60Hz.axgx" 
+following code creates a file in the current directory called "my60Hz.axgx"
 with two channels with 60 Hz sine waves
 
->>> import axographio 
+>>> import axographio
 >>> import numpy as np
 >>>
->>> times = np.arange(0,10,0.0001) 
->>> column1 = np.sin(2*np.pi * 60 * times) 
->>> column2 = np.cos(2*np.pi * 60 * times) 
+>>> times = np.arange(0,10,0.0001)
+>>> column1 = np.sin(2*np.pi * 60 * times)
+>>> column2 = np.cos(2*np.pi * 60 * times)
 >>> f = axographio.file_contents(
-...    ['time (s)', 'my recording (V)', 'your recording (V)'], 
+...    ['time (s)', 'my recording (V)', 'your recording (V)'],
 ...    [times, column1, column2])
 >>> f.write("my60Hz.axgx")
 
@@ -125,8 +125,8 @@ News
 
 0.1.1
 -----
-    Fixed a rounding error that could create one extra data point in the time 
-    column. 
+    Fixed a rounding error that could create one extra data point in the time
+    column.
 
 0.1.0
 -----
@@ -139,12 +139,12 @@ Acknowledgments
 This initial version of this project was written in the
 Chiel Laboratory at Case Western Reserve University, with support from NIH
 grant NS047073, an Ohio Innovation Incentive Award Fellowship, and the
-Case Western Reserve MSTP (NIH T32 GM007250).  This project builds on a 
+Case Western Reserve MSTP (NIH T32 GM007250).  This project builds on a
 number of other open source projects, including Python, C++ AxoGraph file
 input/output code from AxoGraph Scientific (placed in the public domain; a
 modified version is included with the project source code), Cython, and many
-others.  Thanks also to Dr. Hillel Chiel for providing testing and helpful 
-suggestions.  
+others.  Thanks also to Dr. Hillel Chiel for providing testing and helpful
+suggestions.
 """
 
 from setuptools import setup, Extension
@@ -156,11 +156,11 @@ setup(
     setup_requires = ['setuptools_cython', 'numpy'],
     ext_modules = [
         Extension('axographio', [
-            'axographio.pyx', 
-            'axograph_readwrite/fileUtils.cpp', 
-            'axograph_readwrite/byteswap.cpp', 
-            'axograph_readwrite/stringUtils.cpp', 
-            'axograph_readwrite/AxoGraph_ReadWrite.cpp'], 
+            'axographio.pyx',
+            'axograph_readwrite/fileUtils.cpp',
+            'axograph_readwrite/byteswap.cpp',
+            'axograph_readwrite/stringUtils.cpp',
+            'axograph_readwrite/AxoGraph_ReadWrite.cpp'],
             language='c++', include_dirs=[numpy.get_include()],
             define_macros=[('NO_CARBON',1)]
             )
@@ -173,9 +173,8 @@ setup(
     keywords = ["physiology","electrophysiology","axograph"],
     url = "http://code.google.com/p/axographio/",
     description = "A python library for reading and writing AxoGraph data files",
-    classifiers = ["Development Status :: 4 - Beta", "Intended Audience :: Developers", 
+    classifiers = ["Development Status :: 4 - Beta", "Intended Audience :: Developers",
         "Intended Audience :: Science/Research", "License :: OSI Approved :: BSD License",
         "Topic :: Scientific/Engineering :: Bio-Informatics"],
     long_description = __doc__
     )
-

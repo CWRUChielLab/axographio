@@ -1,6 +1,6 @@
 """ Basic unit tests for axographio
 
-This module contains the tests (and doctest wrappers) for the axographio 
+This module contains the tests (and doctest wrappers) for the axographio
 module.
 """
 
@@ -18,12 +18,12 @@ import axographio
 
 class TestSampleFiles(unittest.TestCase):
     """Test the ability to read some sample data files.
-    
-    These files were provided by Axograph with their sample code in 
+
+    These files were provided by Axograph with their sample code in
     Axograph X, and generously released into the public domain.
     """
-    
-    
+
+
     def test_digitizedfile(self):
         file = axographio.read(pkg_resources.resource_filename(__name__,
             'axograph_readwrite/build/Development/AxoGraph Digitized File'))
@@ -40,8 +40,8 @@ class TestSampleFiles(unittest.TestCase):
         self.assertEqual(round(sum(file.data[1]),13), -1.973206e-07)
         self.assertEqual(round(sum(file.data[28]),7), -0.0101875)
         self.assertEqual(round(file.data[0][199],6), 0.02)
-    
-    
+
+
     def test_graphfile(self):
         file = axographio.read(pkg_resources.resource_filename(__name__,
             'axograph_readwrite/build/Development/AxoGraph Graph File'))
@@ -98,13 +98,13 @@ class TestReadWrite(unittest.TestCase):
         scaledcol = axographio.scaledarray([12, -18, 16, 42], 0.001, 0.1)
         floatcol = np.array([1.8218, 4.3672, 5.1484, 7.3235], dtype=np.float32)
         doublecol = np.array(
-                [1.82187845, 4.367244252, 5.14842452445, 7.322452435], 
+                [1.82187845, 4.367244252, 5.14842452445, 7.322452435],
                 dtype=np.float64)
-        shortcol = np.array([11043, -21274, -1834, 32341], dtype=np.int16) 
+        shortcol = np.array([11043, -21274, -1834, 32341], dtype=np.int16)
         intcol = np.array([1213104371, -2027483727, -18, 3234], dtype=np.int32)
         originalfile = axographio.file_contents(
-                ['time', '', 'seq', 'float', 'double', 'short', 'int'], 
-                [timecol, listcol, seqcol, floatcol, doublecol, shortcol, 
+                ['time', '', 'seq', 'float', 'double', 'short', 'int'],
+                [timecol, listcol, seqcol, floatcol, doublecol, shortcol,
                     intcol]
                 )
 
@@ -112,9 +112,9 @@ class TestReadWrite(unittest.TestCase):
         for fileformat in axographio.supported_formats:
             currentfile = copy.deepcopy(originalfile) # to protect the original
             currentfile.fileformat = fileformat
-            
-            # the older formats may lose precision; that's OK for this 
-            # test.  
+
+            # the older formats may lose precision; that's OK for this
+            # test.
             if fileformat == axographio.old_graph_format:
                 accuracy = 5 # digits
             elif fileformat == axographio.old_digitized_format:
@@ -122,7 +122,7 @@ class TestReadWrite(unittest.TestCase):
             else:
                 accuracy = 16 # digits
 
-            # Do more than one pass of reading and writing to make sure the 
+            # Do more than one pass of reading and writing to make sure the
             # data remains consistent.
             for pass_number in range(2):
                 handle, tempfilename = tempfile.mkstemp()
@@ -132,13 +132,13 @@ class TestReadWrite(unittest.TestCase):
                 finally:
                     os.close(handle)
                     os.remove(tempfilename)
-              
+
                 # make sure the newly read data matches the original version
                 self.assertEqual(currentfile.fileformat, fileformat)
-                self.assertEqual(len(originalfile.names), 
+                self.assertEqual(len(originalfile.names),
                         len(currentfile.names))
                 self.assertEqual(len(originalfile.data), len(currentfile.data))
-                self.assert_(np.all([a == b 
+                self.assert_(np.all([a == b
                     for a,b in zip(originalfile.names, currentfile.names)]))
 
                 for a,b in zip(originalfile.data, currentfile.data):
@@ -173,8 +173,8 @@ def test_all():
     return suite
 
 #
-# The following two functions work around an incompatability with doctest and 
-# Cython.  These two functions were cut and pasted from the Cython FAQ at 
+# The following two functions work around an incompatability with doctest and
+# Cython.  These two functions were cut and pasted from the Cython FAQ at
 # http://wiki.cython.org/FAQ - see this FAQ for more details.
 #
 
@@ -204,7 +204,7 @@ def fix_module_doctest(module):
     module.__test__ = {}
     for name in dir(module):
        value = getattr(module, name)
-       if (inspect.isbuiltin(value) and isinstance(value.__doc__, str) 
+       if (inspect.isbuiltin(value) and isinstance(value.__doc__, str)
                and _from_module(module, value)):
            module.__test__[name] = value.__doc__
 
