@@ -182,11 +182,13 @@ class _getitem_iterator:
     def __iter__(self):
         return self
 
-    def next(self):
+    def __next__(self):
         if self.index >= len(self.array):
             raise StopIteration()
         self.index += 1
         return self.array[self.index - 1]
+
+    next = __next__ # for Python 2
 
 
 
