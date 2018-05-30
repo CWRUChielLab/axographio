@@ -57,7 +57,7 @@ class TestSampleFiles(unittest.TestCase):
             self.assertEqual(len(d), 2048)
         self.assertEqual(round(sum(file.data[1]),13), -2.1483816e-6)
         self.assertEqual(round(sum(file.data[2]),13), -1.4318602e-6)
-        self.assertEqual(round(file.data[0][2047],6), 1.024)
+        self.assertEqual(round(float(file.data[0][2047]),6), 1.024)
 
 
     def test_axograph_x_file(self):
