@@ -1,0 +1,8 @@
+# Distribution / packaging
+build/
+dist/
+.eggs/
+*.egg-info/
+
+# Cython
+*.cpp
