@@ -220,7 +220,7 @@ class linearsequence:
     It also works with slices:
 
     >>> seq[1:11:2]
-    array([1.375, 1.875])
+    array([ 1.375,  1.875])
 
 
     Bad indices will result in an exceptions
@@ -243,7 +243,7 @@ class linearsequence:
 
     >>> import numpy
     >>> numpy.asarray(seq)
-    array([1.125, 1.375, 1.625, 1.875, 2.125])
+    array([ 1.125,  1.375,  1.625,  1.875,  2.125])
 
     or iterated over:
 
@@ -305,7 +305,7 @@ def aslinearsequence(x):
     >>> x is y
     False
     >>> np.asarray(y)
-    array([1.2, 2.3, 3.4, 4.5])
+    array([ 1.2,  2.3,  3.4,  4.5])
     >>> z = aslinearsequence(y)
     >>> y is z
     True
@@ -349,7 +349,7 @@ class scaledarray:
     >>> import numpy
     >>> sa = scaledarray(numpy.array([2,7,1,8]), 0.5, 0.25)
     >>> numpy.asarray(sa)
-    array([1.25, 3.75, 0.75, 4.25])
+    array([ 1.25,  3.75,  0.75,  4.25])
     >>> len(sa)
     4
 
@@ -401,7 +401,7 @@ def asscaledarray(x, forceoffset = None):
     >>> x is y
     False
     >>> np.asarray(y).round(3)
-    array([1.25 , 8.125, 6.75 , 4.625, 9.25 ])
+    array([ 1.25 ,  8.125,  6.75 ,  4.625,  9.25 ])
     >>> z = asscaledarray(y)
     >>> y is z
     True
@@ -409,7 +409,7 @@ def asscaledarray(x, forceoffset = None):
     >>> z is q
     False
     >>> np.asarray(y).round(3)
-    array([1.25 , 8.125, 6.75 , 4.625, 9.25 ])
+    array([ 1.25 ,  8.125,  6.75 ,  4.625,  9.25 ])
     >>> z.offset
     5.25
     >>> q.offset
