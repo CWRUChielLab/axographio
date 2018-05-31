@@ -16,6 +16,12 @@ import copy
 
 import axographio
 
+# doctests need the array formatting used in numpy < 1.14
+try:
+    np.set_printoptions(legacy='1.13')
+except TypeError:
+    pass
+
 class TestSampleFiles(unittest.TestCase):
     """Test the ability to read some sample data files.
 
