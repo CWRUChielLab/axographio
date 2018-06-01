@@ -144,11 +144,11 @@ class TestReadWrite(unittest.TestCase):
                 self.assertEqual(len(originalfile.names),
                         len(currentfile.names))
                 self.assertEqual(len(originalfile.data), len(currentfile.data))
-                self.assert_(np.all([a == b
+                self.assertTrue(np.all([a == b
                     for a,b in zip(originalfile.names, currentfile.names)]))
 
                 for a,b in zip(originalfile.data, currentfile.data):
-                    self.assert_(np.all(
+                    self.assertTrue(np.all(
                         self.roughly(a, accuracy) == self.roughly(b, accuracy)))
 
 
