@@ -181,7 +181,8 @@ def test_all():
 #
 # The following two functions work around an incompatability with doctest and
 # Cython.  These two functions were cut and pasted from the Cython FAQ at
-# http://wiki.cython.org/FAQ - see this FAQ for more details.
+# https://github.com/cython/cython/wiki/FAQ#how-can-i-run-doctests-in-cython-code-pyx-files
+# - see this FAQ for more details.
 #
 
 
