@@ -13,9 +13,9 @@ details of the file format along with sample C++ code for reading and writing
 to these files with AxoGraph X.
 
 Python is a powerful and easy to use general purpose programming language (see
-http://python.org for more details).  There are many useful Python libraries
-available for scientific data analysis and data visualization such as scipy,
-matplotlib and Mayavi.
+https://python.org for more details).  There are many useful Python libraries
+available for scientific data analysis and data visualization such as SciPy,
+Matplotlib and Mayavi.
 
 This package provides a simple interface for loading AxoGraph data files into
 a Python program or interactive session.  If you want to analyze data you
@@ -28,35 +28,43 @@ Installation
 Preinstallation Requirements
 ----------------------------
 
-* A working Python installation
-* The setuptools package
-* The NumPy package
-* The Cython package
+* Python 2 or Python 3
+* The ``pip`` package manager (``easy_install`` may also work)
+* The NumPy package (``pip install numpy``)
+* A C++ compiler
+* Git (unless you install from a local copy of the source)
 
-Note that NumPy takes a bit of work to build, so it may be easiest to install
-it from your linux distribution's repository, or use as pre-built package
-such as the Scipy Superpack (http://macinscience.org/?page_id=6) for the mac.
-Depending on your OS, you may be able to get away with simply typing::
+axographio is compatible with Python 2 and 3 and requires NumPy. Installation of
+both is made easy using ``pip``.
 
-    sudo easy_install numpy
-    sudo easy_install Cython
+The package includes an extension that is built from C++ code using Cython. You
+may need to install a C++ compiler if you do not already have one (e.g., Visual
+C++ Build Tools from Microsoft on Windows systems).
 
-Installation
-------------
+Git may be needed for ``pip`` to understand the ``git+https`` protocol. If you
+don't want to install Git, you can circumvent this by manually downloading the
+source and installing from your local directory.
 
-Once all the preinstallation requirements have been met, you can download and
-install axographio using easy_install by typing the following command in a
-terminal window::
+Installing & Upgrading
+----------------------
 
-    easy_install axographio
+    NOTE: As of 2018-06-01, this fork of axographio
+    (`github.com/CWRUChielLab/axographio
+    <https://github.com/CWRUChielLab/axographio>`_) is not on PyPI, and the
+    `version available there <https://pypi.org/project/axographio/>`_ is
+    outdated. Running ``pip install axographio`` will utilize PyPI as the
+    default package index and will therefore not install this updated version.
+    Follow these instructions to build from source using this fork.
 
-Upgrading
----------
+You can simultaneously download, build, and install axographio by typing the
+following command in a terminal window::
+
+    pip install git+https://github.com/CWRUChielLab/axographio
 
 If you have an older version of the package installed, you can update it to
-the newest version using easy_install with the "-U" flag::
+the newest version using the ``-U`` flag::
 
-    easy_install -U axographio
+    pip install -U git+https://github.com/CWRUChielLab/axographio
 
 Usage
 =====
@@ -67,9 +75,9 @@ Loading a data file is as easy as calling ``read``:
 >>>
 >>> f = axographio.read("AxoGraph X File.axgx")
 
-At this point the variable f will contain a file_contents object with the
-column names and data from the file.  For example, you could now plot the first
-two columns using matplotlib:
+At this point the variable ``f`` will contain a ``file_contents`` object with
+the column names and data from the file.  For example, you could now plot the
+first two columns using Matplotlib:
 
 >>> import matplotlib.pyplot as plt
 >>>
@@ -82,17 +90,17 @@ two columns using matplotlib:
 
 Of course, you probably have grander plans than just plotting the data.  The
 column data supports the standard sequence interfaces (i.e. indexing,
-iteration, etc.) and can be converted to a scipy or numpy array using the
-asarray functions in these packages, e.g.:
+iteration, etc.) and can be converted to a NumPy or SciPy array using the
+``asarray`` functions in these packages, e.g.:
 
 >>> import numpy as np
 >>>
 >>> times = np.asarray(f.data[0])
 
-Writing files is also relatively easy.  You simply create a new file_contents
-object (or use one you loaded earlier), and then call write.  For example, the
-following code creates a file in the current directory called "my60Hz.axgx"
-with two channels with 60 Hz sine waves
+Writing files is also relatively easy.  You simply create a new
+``file_contents`` object (or use one you loaded earlier), and then call
+``write``.  For example, the following code creates a file in the current
+directory called "my60Hz.axgx" with two channels with 60 Hz sine waves:
 
 >>> import axographio
 >>> import numpy as np
