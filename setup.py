@@ -3,8 +3,9 @@
 from setuptools import setup, Extension
 import numpy
 
-with open("README.rst", "r") as f:
-    long_description = f.read()
+def readme():
+    with open("README.rst", "r") as f:
+        return f.read()
 
 setup(
     name = "axographio",
@@ -32,6 +33,7 @@ setup(
     keywords = ["physiology","electrophysiology","axograph"],
     url = "https://github.com/CWRUChielLab/axographio",
     description = "A Python package for reading and writing AxoGraph data files",
+    long_description = readme(),
     classifiers = [
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
@@ -40,6 +42,5 @@ setup(
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: BSD License",
         "Topic :: Scientific/Engineering :: Bio-Informatics"
-        ],
-    long_description = long_description
+        ]
     )
