@@ -26,6 +26,8 @@ setup(
     # metatdata
     author = "Kendrick Shaw, Jeffrey Gill",
     author_email = "kms15@case.edu, jeffrey.p.gill@gmail.com",
+    maintainer = "Jeffrey Gill",
+    maintainer_email = "jeffrey.p.gill@gmail.com",
     license = "BSD License",
     keywords = ["physiology","electrophysiology","axograph"],
     url = "https://github.com/CWRUChielLab/axographio",
