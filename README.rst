@@ -28,11 +28,11 @@ Preinstallation Requirements
 * Python 2 or Python 3
 * The ``pip`` package manager (``easy_install`` may also work)
 * The NumPy package (``pip install numpy``)
-* A C++ compiler
+* The Cython package, version 0.19 or later (``pip install cython>=0.19``)
 * Git (unless you install from a local copy of the source)
 
-axographio is compatible with Python 2 and 3 and requires NumPy. Installation of
-both is made easy using ``pip``.
+axographio is compatible with both Python 2 and Python 3. It requires both NumPy
+and Cython to build, and it requires NumPy to run.
 
 The package includes an extension that is built from C++ code using Cython. You
 may need to install a C++ compiler if you do not already have one (e.g., Visual
