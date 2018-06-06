@@ -32,7 +32,7 @@ class TestSampleFiles(unittest.TestCase):
 
     def test_digitizedfile(self):
         file = axographio.read(pkg_resources.resource_filename(__name__,
-            'axograph_readwrite/build/Development/AxoGraph Digitized File'))
+            '../axograph_readwrite/build/Development/AxoGraph Digitized File'))
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.old_digitized_format)
         self.assertEqual(len(file.names), len(file.data))
@@ -50,7 +50,7 @@ class TestSampleFiles(unittest.TestCase):
 
     def test_graphfile(self):
         file = axographio.read(pkg_resources.resource_filename(__name__,
-            'axograph_readwrite/build/Development/AxoGraph Graph File'))
+            '../axograph_readwrite/build/Development/AxoGraph Graph File'))
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.old_graph_format)
         self.assertEqual(len(file.names), len(file.data))
@@ -68,7 +68,7 @@ class TestSampleFiles(unittest.TestCase):
 
     def test_axograph_x_file(self):
         file = axographio.read(pkg_resources.resource_filename(__name__,
-            'axograph_readwrite/build/Development/AxoGraph X File.axgx'))
+            '../axograph_readwrite/build/Development/AxoGraph X File.axgx'))
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.axograph_x_format)
         self.assertEqual(len(file.names), len(file.data))
@@ -171,8 +171,8 @@ class TestRegressions(unittest.TestCase):
 def test_all():
     """Returns a test suite with all of the tests for axographio"""
     suite = unittest.TestSuite()
-    fix_module_doctest(axographio)
-    suite.addTest(doctest.DocTestSuite(axographio))
+    fix_module_doctest(axographio.extension)
+    suite.addTest(doctest.DocTestSuite(axographio.extension))
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestSampleFiles))
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestReadWrite))
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestRegressions))

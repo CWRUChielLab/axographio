@@ -12,18 +12,19 @@ setup(
     version = "0.2.0",
     setup_requires   = ['numpy', 'cython>=0.19'],   # needed to build package
     install_requires = ['numpy'],                   # needed to run package
+    packages = ['axographio', 'axographio.tests'],
     ext_modules = [
-        Extension('axographio', [
-            'axographio.pyx',
-            'axograph_readwrite/fileUtils.cpp',
-            'axograph_readwrite/byteswap.cpp',
-            'axograph_readwrite/stringUtils.cpp',
-            'axograph_readwrite/AxoGraph_ReadWrite.cpp'],
+        Extension('axographio.extension', [
+            'axographio/axographio.pyx',
+            'axographio/axograph_readwrite/fileUtils.cpp',
+            'axographio/axograph_readwrite/byteswap.cpp',
+            'axographio/axograph_readwrite/stringUtils.cpp',
+            'axographio/axograph_readwrite/AxoGraph_ReadWrite.cpp'],
             language='c++', include_dirs=[numpy.get_include()],
             define_macros=[('NO_CARBON',1)]
             )
         ],
-    test_suite = 'test_axographio.test_all',
+    test_suite = 'axographio.tests.test_axographio.test_all',
     # metatdata
     author = "Kendrick Shaw, Jeffrey Gill",
     author_email = "kms15@case.edu, jeffrey.p.gill@gmail.com",
