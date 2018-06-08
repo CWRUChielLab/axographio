@@ -599,7 +599,7 @@ def read(char* filename):
     """Read an Axograph file
 
     Read an Axograph file from disk and return the contents as an
-    axographio.filedata object.
+    axographio.file_contents object.
 
     """
     cdef int fileformat = 0
