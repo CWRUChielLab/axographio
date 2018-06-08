@@ -1,2 +1,2 @@
 include LICENSE
-recursive-include axographio/axograph_readwrite *
+recursive-include axographio/include/axograph_readwrite *

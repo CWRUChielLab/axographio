@@ -32,7 +32,7 @@ class TestSampleFiles(unittest.TestCase):
 
     def test_digitizedfile(self):
         file = axographio.read(pkg_resources.resource_filename(__name__,
-            '../axograph_readwrite/build/Development/AxoGraph Digitized File'))
+            '../include/axograph_readwrite/build/Development/AxoGraph Digitized File'))
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.old_digitized_format)
         self.assertEqual(len(file.names), len(file.data))
@@ -50,7 +50,7 @@ class TestSampleFiles(unittest.TestCase):
 
     def test_graphfile(self):
         file = axographio.read(pkg_resources.resource_filename(__name__,
-            '../axograph_readwrite/build/Development/AxoGraph Graph File'))
+            '../include/axograph_readwrite/build/Development/AxoGraph Graph File'))
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.old_graph_format)
         self.assertEqual(len(file.names), len(file.data))
@@ -68,7 +68,7 @@ class TestSampleFiles(unittest.TestCase):
 
     def test_axograph_x_file(self):
         file = axographio.read(pkg_resources.resource_filename(__name__,
-            '../axograph_readwrite/build/Development/AxoGraph X File.axgx'))
+            '../include/axograph_readwrite/build/Development/AxoGraph X File.axgx'))
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.axograph_x_format)
         self.assertEqual(len(file.names), len(file.data))

@@ -10,7 +10,7 @@ cdef extern from "stdlib.h":
     void* memcpy(void* destination, void* source, size_t num)
     void* memset(void* destination, int source, size_t num)
 
-cdef extern from "axograph_readwrite/fileUtils.h":
+cdef extern from "include/axograph_readwrite/fileUtils.h":
     ctypedef void* AGDataRef
     ctypedef extern char* const_char_ptr "const char*"
     AGDataRef NewFile( const_char_ptr fileName )
@@ -18,7 +18,7 @@ cdef extern from "axograph_readwrite/fileUtils.h":
     void CloseFile( AGDataRef dataRefNum )
 
 
-cdef extern from "axograph_readwrite/AxoGraph_ReadWrite.h":
+cdef extern from "include/axograph_readwrite/AxoGraph_ReadWrite.h":
     ctypedef int int32_t
     enum ag_errors:
         kAG_MemoryErr, kAG_FormatErr, kAG_VersionErr

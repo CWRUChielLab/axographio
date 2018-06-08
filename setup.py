@@ -15,11 +15,11 @@ setup(
     packages = ['axographio', 'axographio.tests'],
     ext_modules = [
         Extension('axographio.extension', [
-            'axographio/axographio.pyx',
-            'axographio/axograph_readwrite/fileUtils.cpp',
-            'axographio/axograph_readwrite/byteswap.cpp',
-            'axographio/axograph_readwrite/stringUtils.cpp',
-            'axographio/axograph_readwrite/AxoGraph_ReadWrite.cpp'],
+            'axographio/extension.pyx',
+            'axographio/include/axograph_readwrite/fileUtils.cpp',
+            'axographio/include/axograph_readwrite/byteswap.cpp',
+            'axographio/include/axograph_readwrite/stringUtils.cpp',
+            'axographio/include/axograph_readwrite/AxoGraph_ReadWrite.cpp'],
             language='c++', include_dirs=[numpy.get_include()],
             define_macros=[('NO_CARBON',1)]
             )
