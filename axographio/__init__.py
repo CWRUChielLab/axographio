@@ -12,6 +12,7 @@ except NameError:
 if not __AXOGRAPHIO_SETUP__:
     # must be running from an installation
     from .extension import *
+    from . import tests
 
     # explicit listing needed to ensure pydoc/help() finds everything
     __all__ = [

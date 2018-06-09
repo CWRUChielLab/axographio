@@ -168,7 +168,7 @@ class TestRegressions(unittest.TestCase):
 
 
 
-def test_all():
+def test_suite():
     """Returns a test suite with all of the tests for axographio"""
     suite = unittest.TestSuite()
     fix_module_doctest(axographio.extension)
@@ -177,6 +177,10 @@ def test_all():
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestReadWrite))
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestRegressions))
     return suite
+
+def run():
+    """Run the test suite containing all of the tests for axographio"""
+    unittest.TextTestRunner(verbosity=2).run(test_suite())
 
 #
 # The following two functions work around an incompatability with doctest and
@@ -217,4 +221,4 @@ def fix_module_doctest(module):
 
 
 if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(test_all())
+    run()
