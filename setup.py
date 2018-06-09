@@ -16,16 +16,6 @@ IS_RELEASED = False # determines whether version will be marked as development
 VERSION     = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
 
-# Set a global variable so that axographio/__init__.py can detect if it is being
-# loaded by the setup routine (which can happen below if axographio.version must
-# be imported), to avoid attempting to load the extension before it is built.
-if sys.version_info[0] >= 3:
-    import builtins
-else:
-    import __builtin__ as builtins
-builtins.__AXOGRAPHIO_SETUP__ = True
-
-
 # This function may be used below to query git for a revision number.
 def _minimal_ext_cmd(cmd):
     """Run an external command and return the result."""
@@ -44,29 +34,27 @@ def _minimal_ext_cmd(cmd):
 
 
 # Try to fetch the git revision number from the .git directory if it exists.
-if os.path.exists('.git'):
+if os.path.exists(".git"):
     try:
         out = _minimal_ext_cmd(['git', 'rev-parse', 'HEAD'])
         GIT_REVISION = out.strip().decode('ascii')
     except OSError:
-        GIT_REVISION = "Unknown"
+        GIT_REVISION = "unknown"
 # If the .git directory is absent (perhaps because this is a source distro),
 # try to fetch the rev number from axographio/version.py where it may have been
 # stored during packaging.
-elif os.path.exists('axographio/version.py'):
+elif os.path.exists("axographio/version.py"):
     try:
-        # It is important that accessing the axographio package this way does
-        # not trigger an attempt to load the extension before it is build. This
-        # is the reason for __AXOGRAPHIO_SETUP__, which axographio/__init__.py
-        # will detect and prevent loading the extension, after git_revision is
-        # loaded.
-        from axographio.version import git_revision as GIT_REVISION
+        v = {}
+        with open("axographio/version.py", "r") as f:
+            exec(f.read(), v)
+        GIT_REVISION = v['git_revision']
     except ImportError:
         raise ImportError("Unable to import git_revision. Try removing " \
                           "axographio/version.py and the build directory " \
                           "before building.")
 else:
-    GIT_REVISION = "Unknown"
+    GIT_REVISION = "unknown"
 
 
 # If this is not a release version, mark it as a development build/distro and
@@ -138,8 +126,3 @@ setup(
         "Topic :: Scientific/Engineering :: Bio-Informatics"
         ]
     )
-
-# This may avoid problems where axographio is installed via ``*_requires`` by
-# setuptools, the global namespace isn't reset properly, and then axographio is
-# imported later (which will then fail to load the axographio extension module).
-del builtins.__AXOGRAPHIO_SETUP__
