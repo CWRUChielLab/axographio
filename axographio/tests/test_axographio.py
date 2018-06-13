@@ -16,6 +16,15 @@ import copy
 
 import axographio
 
+example_files = {
+    'old_digitized_format': pkg_resources.resource_filename(__name__,
+        '../include/axograph_readwrite/AxoGraph Digitized File'),
+    'old_graph_format':     pkg_resources.resource_filename(__name__,
+        '../include/axograph_readwrite/AxoGraph Graph File'),
+    'axograph_x_format':    pkg_resources.resource_filename(__name__,
+        '../include/axograph_readwrite/AxoGraph X File.axgx'),
+    }
+
 # doctests need the array formatting used in numpy < 1.14
 try:
     np.set_printoptions(legacy='1.13')
@@ -31,8 +40,7 @@ class TestSampleFiles(unittest.TestCase):
 
 
     def test_digitizedfile(self):
-        file = axographio.read(pkg_resources.resource_filename(__name__,
-            '../include/axograph_readwrite/AxoGraph Digitized File'))
+        file = axographio.read(example_files['old_digitized_format'])
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.old_digitized_format)
         self.assertEqual(len(file.names), len(file.data))
@@ -49,8 +57,7 @@ class TestSampleFiles(unittest.TestCase):
 
 
     def test_graphfile(self):
-        file = axographio.read(pkg_resources.resource_filename(__name__,
-            '../include/axograph_readwrite/AxoGraph Graph File'))
+        file = axographio.read(example_files['old_graph_format'])
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.old_graph_format)
         self.assertEqual(len(file.names), len(file.data))
@@ -67,8 +74,7 @@ class TestSampleFiles(unittest.TestCase):
 
 
     def test_axograph_x_file(self):
-        file = axographio.read(pkg_resources.resource_filename(__name__,
-            '../include/axograph_readwrite/AxoGraph X File.axgx'))
+        file = axographio.read(example_files['axograph_x_format'])
         # do some sanity checks to make sure the file loaded as expected
         self.assertEqual(file.fileformat, axographio.axograph_x_format)
         self.assertEqual(len(file.names), len(file.data))
