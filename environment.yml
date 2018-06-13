@@ -1,0 +1,6 @@
+dependencies:
+    - cython>=0.19
+    - matplotlib
+    - numpy
+    - pip:
+        - git+https://github.com/CWRUChielLab/axographio.git@add-jupyter-examples
