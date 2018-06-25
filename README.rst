@@ -73,7 +73,7 @@ Loading a data file is as easy as calling ``read``:
 
 >>> import axographio
 >>>
->>> f = axographio.read("AxoGraph X File.axgx")
+>>> f = axographio.read('AxoGraph X File.axgx')
 
 At this point the variable ``f`` will contain a ``file_contents`` object with
 the column names and data from the file.  For example, you could now plot the
@@ -84,9 +84,7 @@ first two columns using Matplotlib:
 >>> plt.plot(f.data[0], f.data[1])
 >>> plt.xlabel(f.names[0])
 >>> plt.ylabel(f.names[1])
->>> plt.show()
-
-(The ``plt.show()`` command may be optional depending on your OS.)
+>>> plt.show()  # may be optional depending on your OS
 
 Of course, you probably have grander plans than just plotting the data.  The
 column data supports the standard sequence interfaces (i.e. indexing,
@@ -100,18 +98,18 @@ iteration, etc.) and can be converted to a NumPy or SciPy array using the
 Writing files is also relatively easy.  You simply create a new
 ``file_contents`` object (or use one you loaded earlier), and then call
 ``write``.  For example, the following code creates a file in the current
-directory called "my60Hz.axgx" with two channels with 60 Hz sine waves:
+directory called 'my60Hz.axgx' with two channels with 60 Hz sine waves:
 
 >>> import axographio
 >>> import numpy as np
 >>>
->>> times = np.arange(0,10,0.0001)
+>>> times = np.arange(0, 10, 0.0001)
 >>> column1 = np.sin(2*np.pi * 60 * times)
 >>> column2 = np.cos(2*np.pi * 60 * times)
 >>> f = axographio.file_contents(
 ...    ['time (s)', 'my recording (V)', 'your recording (V)'],
 ...    [times, column1, column2])
->>> f.write("my60Hz.axgx")
+>>> f.write('my60Hz.axgx') # created in the current directory
 
 Questions and Support
 =====================

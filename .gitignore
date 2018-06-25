@@ -1,6 +1,7 @@
 # Specific to this project
 /axographio/version.py
 /axographio/extension.cpp
+/examples/my60Hz.axgx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
