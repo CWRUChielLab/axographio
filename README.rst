@@ -1,5 +1,5 @@
 .. image:: https://mybinder.org/badge.svg
-    :target: https://mybinder.org/v2/gh/CWRUChielLab/axographio/master?filepath=examples
+    :target: https://mybinder.org/v2/gh/CWRUChielLab/axographio/master?filepath=examples%2Fbasic-demo.ipynb
 
 axographio is a Python package that makes it easy to read and write binary data
 files in the AxoGraph file format.
