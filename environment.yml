@@ -3,4 +3,4 @@ dependencies:
     - matplotlib
     - numpy
     - pip:
-        - git+https://github.com/CWRUChielLab/axographio.git@add-jupyter-examples
+        - git+https://github.com/CWRUChielLab/axographio.git
