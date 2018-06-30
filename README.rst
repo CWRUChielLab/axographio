@@ -1,8 +1,14 @@
+axographio
+==========
+
+.. image:: https://img.shields.io/pypi/v/axographio.svg
+    :target: https://pypi.python.org/pypi/axographio
+
 .. image:: https://mybinder.org/badge.svg
     :target: https://mybinder.org/v2/gh/CWRUChielLab/axographio/master?filepath=examples%2Fbasic-demo.ipynb
 
-axographio is a Python package that makes it easy to read and write binary data
-files in the AxoGraph file format.
+**axographio** is a Python package that makes it easy to read and write binary
+data files in the AxoGraph file format.
 
 AxoGraph X is a commercial software package used for data acquisition and
 analysis that is widely used in electrophysiological research (see
@@ -23,10 +29,10 @@ recorded in AxoGraph using Python based tools, this package provides the glue
 code you'll need.
 
 Installation
-============
+------------
 
 Preinstallation Requirements
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Python 2 or Python 3
 * The ``pip`` package manager (``easy_install`` may also work)
@@ -46,7 +52,7 @@ don't want to install Git, you can circumvent this by manually downloading the
 source and installing from your local directory.
 
 Installing & Upgrading
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
     NOTE: As of 2018-06-01, this fork of axographio
     (`github.com/CWRUChielLab/axographio
@@ -67,7 +73,7 @@ the newest version using the ``-U`` flag::
     pip install -U git+https://github.com/CWRUChielLab/axographio
 
 Usage
-=====
+-----
 
 Loading a data file is as easy as calling ``read``:
 
@@ -112,29 +118,29 @@ directory called 'my60Hz.axgx' with two channels with 60 Hz sine waves:
 >>> f.write('my60Hz.axgx') # created in the current directory
 
 Questions and Support
-=====================
+---------------------
 
 Please post any questions, problems, comments, or suggestions in the `GitHub
 issue tracker <https://github.com/CWRUChielLab/axographio/issues>`_.
 
 News
-====
+----
 
 0.2.0
------
+~~~~~
     Added compatibility with Python 3.
 
 0.1.1
------
+~~~~~
     Fixed a rounding error that could create one extra data point in the time
     column.
 
 0.1.0
------
+~~~~~
     First release
 
 Acknowledgments
-===============
+---------------
 
 This initial version of this project was written in the
 Chiel Laboratory at Case Western Reserve University, with support from NIH
