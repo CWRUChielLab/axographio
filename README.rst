@@ -153,6 +153,18 @@ issue tracker <https://github.com/CWRUChielLab/axographio/issues>`_.
 Changes
 -------
 
+0.3.0
+~~~~~
+
+* Package test suite can be run using ``axographio.tests.run()``
+* Package version can be accessed using ``axographio.__version__``
+* Added example Jupyter notebook to source repository (not included with
+  installation)
+* Updated installation instructions
+* Improved documentation
+* Reorganized source code file structure
+* Fixed doctests for NumPy < 1.14
+
 0.2.0
 ~~~~~
 

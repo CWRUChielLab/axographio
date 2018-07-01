@@ -10,9 +10,9 @@ import numpy
 # Change version number here, not in axographio/version.py, which is generated
 # by this script. Try to follow recommended versioning guidelines at semver.org.
 MAJOR       = 0     # increment for backwards-incompatible changes
-MINOR       = 2     # increment for backwards-compatible feature additions
+MINOR       = 3     # increment for backwards-compatible feature additions
 MICRO       = 0     # increment for backwards-compatible bug fixes
-IS_RELEASED = False # determines whether version will be marked as development
+IS_RELEASED = True  # determines whether version will be marked as development
 VERSION     = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
 
