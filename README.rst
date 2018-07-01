@@ -2,78 +2,105 @@ axographio
 ==========
 
 .. image:: https://img.shields.io/pypi/v/axographio.svg
-    :target: https://pypi.python.org/pypi/axographio
+    :target: PyPI_
+    :alt: PyPI project
 
-.. image:: https://mybinder.org/badge.svg
-    :target: https://mybinder.org/v2/gh/CWRUChielLab/axographio/master?filepath=examples%2Fbasic-demo.ipynb
+.. image:: https://img.shields.io/badge/github-source_code-blue.svg
+    :target: GitHub_
+    :alt: GitHub source code
+
+.. image:: https://img.shields.io/badge/binder-launch_demo-e66581.svg
+    :target: Binder_
+    :alt: Launch a demo in Binder
 
 **axographio** is a Python package that makes it easy to read and write binary
 data files in the AxoGraph file format.
 
-AxoGraph X is a commercial software package used for data acquisition and
-analysis that is widely used in electrophysiological research (see
-https://axograph.com for more details).  While it can read and write files in
-text format, its binary format is much smaller and faster to load and save;
-thus many users preferentially use this format.  The company distributes the
-details of the file format along with sample C++ code for reading and writing
-to these files with AxoGraph X.
+AxoGraph_ is a commercial software package for data acquisition and analysis
+that is widely used in electrophysiological research. Although it can read and
+write files in text format, its binary format is much smaller and faster to load
+and save; thus many users preferentially use this format. The company
+distributes the details of the file format along with sample C++ code for
+reading and writing to these files using third-party software, such as this
+Python package.
 
-Python is a powerful and easy to use general purpose programming language (see
-https://python.org for more details).  There are many useful Python libraries
-available for scientific data analysis and data visualization such as SciPy,
-Matplotlib and Mayavi.
+Python_ is a powerful and easy to use general purpose programming language.
+There are many useful Python libraries available for scientific data analysis
+and data visualization such as SciPy, Matplotlib, and Mayavi.
 
 This package provides a simple interface for loading AxoGraph data files into
-a Python program or interactive session.  If you want to analyze data you
-recorded in AxoGraph using Python based tools, this package provides the glue
-code you'll need.
+a Python program or interactive session. If you want to analyze data you
+recorded in AxoGraph using Python-based tools, this package provides the glue
+code you'll need. You can also write data to the AxoGraph binary format so that
+it can be viewed and analyzed within AxoGraph.
 
-Installation
-------------
+.. _PyPI:       https://pypi.org/project/axographio/
+.. _GitHub:     https://github.com/CWRUChielLab/axographio
+.. _Binder:     https://mybinder.org/v2/gh/CWRUChielLab/axographio/master?filepath=examples%2Fbasic-demo.ipynb
+.. _AxoGraph:   https://axograph.com
+.. _Python:     https://python.org
 
-Preinstallation Requirements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Getting axographio
+------------------
 
-* Python 2 or Python 3
-* The ``pip`` package manager (``easy_install`` may also work)
+**axographio** is compatible with both Python 2 and Python 3.
+
+The easiest way to get **axographio** is to install the latest stable version
+using ``pip``, but you can alternatively build it from the source code.
+
+Installing the latest stable version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Requirements for installing and running **axographio**:
+
+* The NumPy package (``pip install numpy``)
+
+The **axographio** package contains C++ code that must be compiled. PyPI_ stores
+pre-compiled copies of the package for common platforms (e.g., Python 3 on
+64-bit Windows), and these can be installed using ``pip``.
+
+To install the latest stable version, try the following::
+
+    pip install axographio
+
+If a pre-compiled package is available for your platform on PyPI_, ``pip``
+should quickly download and install it. If not, ``pip`` will automatically
+attempt to build the package from source code. Building the package has
+additional requirements. If ``pip`` fails during building, keep reading.
+
+Building from source code
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you need to build the package because a pre-compiled version is not already
+available for your platform on PyPI_, or if you just want to try building from
+the source code, you will need to meet additional requirements.
+
+Requirements for building **axographio** from source code:
+
 * The NumPy package (``pip install numpy``)
 * The Cython package, version 0.19 or later (``pip install cython>=0.19``)
-* Git (unless you install from a local copy of the source)
+* A C++ compiler  (e.g., Visual C++ Build Tools from Microsoft on Windows
+  systems, or Xcode on Mac systems)
 
-axographio is compatible with both Python 2 and Python 3. It requires both NumPy
-and Cython to build, and it requires NumPy to run.
+If ``pip`` failed while trying to build from source code, make sure you meet
+these requirements and try again.
 
-The package includes an extension that is built from C++ code using Cython. You
-may need to install a C++ compiler if you do not already have one (e.g., Visual
-C++ Build Tools from Microsoft on Windows systems).
-
-Git may be needed for ``pip`` to understand the ``git+https`` protocol. If you
-don't want to install Git, you can circumvent this by manually downloading the
-source and installing from your local directory.
-
-Installing & Upgrading
-~~~~~~~~~~~~~~~~~~~~~~
-
-    NOTE: As of 2018-06-01, this fork of axographio
-    (`github.com/CWRUChielLab/axographio
-    <https://github.com/CWRUChielLab/axographio>`_) is not on PyPI, and the
-    `version available there <https://pypi.org/project/axographio/>`_ is
-    outdated. Running ``pip install axographio`` will utilize PyPI as the
-    default package index and will therefore not install this updated version.
-    Follow these instructions to build from source using this fork.
-
-You can simultaneously download, build, and install axographio by typing the
-following command in a terminal window::
+If you would like to build and install using the latest development source code
+from GitHub_, try the following::
 
     pip install git+https://github.com/CWRUChielLab/axographio
 
-If you have an older version of the package installed, you can update it to
-the newest version using the ``-U`` flag::
+This command requires ``git``. If you don't have ``git``, you can instead
+manually download the source from GitHub_ and install from your local
+directory::
 
-    pip install -U git+https://github.com/CWRUChielLab/axographio
+    pip install C:\wherever-you-put-the-source-code
 
 Usage
 -----
+
+Try out the Binder_ demo for an interactive Python session that requires no
+installation or fuss. You can start hacking *right now!*
 
 Loading a data file is as easy as calling ``read``:
 
@@ -93,7 +120,7 @@ first two columns using Matplotlib:
 >>> plt.show()  # may be optional depending on your OS
 
 Of course, you probably have grander plans than just plotting the data.  The
-column data supports the standard sequence interfaces (i.e. indexing,
+column data supports the standard sequence interfaces (i.e., indexing,
 iteration, etc.) and can be converted to a NumPy or SciPy array using the
 ``asarray`` functions in these packages, e.g.:
 
@@ -123,21 +150,24 @@ Questions and Support
 Please post any questions, problems, comments, or suggestions in the `GitHub
 issue tracker <https://github.com/CWRUChielLab/axographio/issues>`_.
 
-News
-----
+Changes
+-------
 
 0.2.0
 ~~~~~
-    Added compatibility with Python 3.
+
+* Added compatibility with Python 3
 
 0.1.1
 ~~~~~
-    Fixed a rounding error that could create one extra data point in the time
-    column.
+
+* Fixed a rounding error that could create one extra data point in the time
+  column
 
 0.1.0
 ~~~~~
-    First release
+
+* First release
 
 Acknowledgments
 ---------------
