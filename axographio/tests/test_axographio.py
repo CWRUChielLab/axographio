@@ -25,12 +25,6 @@ example_files = {
         '../include/axograph_readwrite/AxoGraph X File.axgx'),
     }
 
-# doctests need the array formatting used in numpy < 1.14
-try:
-    np.set_printoptions(legacy='1.13')
-except TypeError:
-    pass
-
 class TestSampleFiles(unittest.TestCase):
     """Test the ability to read some sample data files.
 
@@ -186,6 +180,13 @@ def test_suite():
 
 def run():
     """Run the test suite containing all of the tests for axographio"""
+
+    # doctests need the array formatting used in numpy < 1.14
+    try:
+        np.set_printoptions(legacy='1.13')
+    except TypeError:
+        pass
+
     unittest.TextTestRunner(verbosity=2).run(test_suite())
 
 #
