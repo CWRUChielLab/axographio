@@ -153,6 +153,11 @@ issue tracker <https://github.com/CWRUChielLab/axographio/issues>`_.
 Changes
 -------
 
+0.3.1
+~~~~~
+
+* Modify NumPy's global print settings only when running tests
+
 0.3.0
 ~~~~~
 

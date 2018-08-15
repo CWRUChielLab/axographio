@@ -11,8 +11,8 @@ import numpy
 # by this script. Try to follow recommended versioning guidelines at semver.org.
 MAJOR       = 0     # increment for backwards-incompatible changes
 MINOR       = 3     # increment for backwards-compatible feature additions
-MICRO       = 0     # increment for backwards-compatible bug fixes
-IS_RELEASED = False # determines whether version will be marked as development
+MICRO       = 1     # increment for backwards-compatible bug fixes
+IS_RELEASED = True  # determines whether version will be marked as development
 VERSION     = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
 
