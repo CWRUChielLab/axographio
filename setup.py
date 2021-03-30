@@ -12,7 +12,7 @@ import numpy
 MAJOR       = 0     # increment for backwards-incompatible changes
 MINOR       = 3     # increment for backwards-compatible feature additions
 MICRO       = 2     # increment for backwards-compatible bug fixes
-IS_RELEASED = False # determines whether version will be marked as development
+IS_RELEASED = True  # determines whether version will be marked as development
 VERSION     = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
 

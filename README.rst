@@ -153,6 +153,12 @@ issue tracker <https://github.com/CWRUChielLab/axographio/issues>`_.
 Changes
 -------
 
+0.3.2
+~~~~~
+
+* Re-release of 0.3.1 with version bump to address `issue #8
+  <https://github.com/CWRUChielLab/axographio/issues/8>`__
+
 0.3.1
 ~~~~~
 
