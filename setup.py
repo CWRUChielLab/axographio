@@ -85,8 +85,8 @@ with open("README.rst", "r") as f:
 setup(
     name = "axographio",
     version = VERSION,
-    setup_requires   = ['numpy', 'cython>=0.19'],   # needed to build axographio
-    install_requires = ['numpy'],                   # needed to run axographio
+    setup_requires   = ['numpy>=1.20', 'cython>=0.19'],   # needed to build axographio
+    install_requires = ['numpy>=1.20'],                   # needed to run axographio
     packages = ['axographio', 'axographio.tests'],
     ext_modules = [
         Extension('axographio.extension', [
